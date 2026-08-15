@@ -3,8 +3,23 @@
 const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-menuToggle.addEventListener("click", () => {
+menuToggle.addEventListener("click", (e) => {
+  e.stopPropagation();
   navLinks.classList.toggle("active");
+});
+
+// Close mobile menu when a nav link is clicked
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("active");
+  });
+});
+
+// Close mobile menu when clicking outside
+document.addEventListener("click", (e) => {
+  if (!e.target.closest(".navbar")) {
+    navLinks.classList.remove("active");
+  }
 });
 
 // ================= AOS =================
