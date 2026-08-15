@@ -295,6 +295,24 @@ body {
   margin-bottom: 30px;
 }
 
+.cta-box .btn {
+  background: #ffffff;
+  color: #ff6b00;
+  font-weight: 700;
+  border-radius: 30px;
+  padding: 14px 34px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+.cta-box .btn:hover {
+  background: #0b2b58;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(11, 43, 88, 0.4);
+}
+
 /* ================= FOOTER ================= */
 
 .footer {
@@ -1202,3 +1220,237 @@ video {
     overflow-x: hidden;
   }
 }
+
+/* ================= OTP MODAL & TOAST NOTIFICATIONS ================= */
+
+/* Modal Overlay */
+.otp-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 43, 88, 0.65);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.otp-modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Card */
+.otp-modal-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 35px 28px;
+  max-width: 440px;
+  width: 90%;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transform: scale(0.85);
+  transition: transform 0.3s ease;
+}
+
+.otp-modal-overlay.active .otp-modal-card {
+  transform: scale(1);
+}
+
+.otp-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.4rem;
+  color: #888;
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: color 0.2s;
+}
+
+.otp-modal-close:hover {
+  color: #ff6b00;
+}
+
+.otp-modal-icon {
+  width: 65px;
+  height: 65px;
+  border-radius: 50%;
+  background: rgba(255, 107, 0, 0.12);
+  color: #ff6b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px auto;
+  font-size: 1.8rem;
+}
+
+.otp-modal-card h3 {
+  color: #0b2b58;
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.otp-modal-card p {
+  color: #555;
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 22px;
+}
+
+.otp-modal-card p .user-email-target {
+  font-weight: 600;
+  color: #0b2b58;
+  word-break: break-all;
+}
+
+/* 6-Digit OTP Inputs */
+.otp-input-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 22px;
+}
+
+.otp-digit-input {
+  width: 44px;
+  height: 52px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: inherit;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  color: #0b2b58;
+  background: #fdfdfd;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.otp-digit-input:focus {
+  border-color: #ff6b00;
+  background: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 107, 0, 0.25);
+}
+
+.otp-resend-wrapper {
+  font-size: 0.88rem;
+  color: #666;
+  margin-top: 15px;
+}
+
+.otp-resend-btn {
+  color: #ff6b00;
+  font-weight: 600;
+  border: none;
+  background: none;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0 4px;
+}
+
+.otp-resend-btn:disabled {
+  color: #aaa;
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+/* Toast Notifications Container */
+.toast-container {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.toast {
+  pointer-events: auto;
+  min-width: 290px;
+  max-width: 380px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.35s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.35s ease;
+}
+
+.toast.show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-success {
+  border-left: 5px solid #28a745;
+}
+
+.toast-success .toast-icon {
+  color: #28a745;
+}
+
+.toast-error {
+  border-left: 5px solid #dc3545;
+}
+
+.toast-error .toast-icon {
+  color: #dc3545;
+}
+
+.toast-info {
+  border-left: 5px solid #ff6b00;
+}
+
+.toast-info .toast-icon {
+  color: #ff6b00;
+}
+
+.toast-message {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #222;
+  line-height: 1.4;
+}
+
+/* Loading state spinner inside button */
+.btn-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  border-top-color: #ffffff;
+  animation: spin 0.8s linear infinite;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+

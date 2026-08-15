@@ -126,31 +126,33 @@
         <!-- RIGHT SIDE -->
 
         <div class="join-form-container" id="join-form-section" data-aos="fade-left">
-          <form class="join-form">
+          <form class="join-form" id="joinForm">
             <h2>Volunteer Registration</h2>
 
             <div class="form-group">
-              <input type="text" placeholder="Full Name" required />
+              <input type="text" id="joinName" name="name" placeholder="Full Name" required />
             </div>
 
             <div class="form-group">
-              <input type="email" placeholder="Email Address" required />
+              <input type="email" id="joinEmail" name="email" placeholder="Email Address" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" title="Please enter a valid email address (e.g. name@example.com)" required />
             </div>
 
             <div class="form-group">
-              <input type="tel" placeholder="Phone Number" required />
+              <input type="tel" id="joinPhone" name="phone" placeholder="Phone Number" required />
             </div>
 
             <div class="form-group">
-              <input type="text" placeholder="State / City" />
+              <input type="text" id="joinState" name="location" placeholder="State / City" />
             </div>
 
             <div class="form-group">
-              <input type="text" placeholder="Skills / Interests" />
+              <input type="text" id="joinSkills" name="skills" placeholder="Skills / Interests" />
             </div>
 
             <div class="form-group">
               <textarea
+                id="joinReason"
+                name="reason"
                 rows="5"
                 placeholder="Why do you want to join?"
               ></textarea>
@@ -159,8 +161,6 @@
             <button type="submit" class="btn primary-btn full-btn">
               Submit Application
             </button>
-
-            <!-- Integrate EmailJS or backend later -->
           </form>
         </div>
       </div>
@@ -248,19 +248,11 @@
         </div>
 
         <div class="footer-contact">
-          <h4>Contact</h4>
+          <h4>Contact Info</h4>
 
-          <p>Email: info@onedaymataram.com</p>
+          <p><i class="fas fa-envelope"></i> info@onedaymataram.com</p>
 
-          <!-- Social media accounts (uncomment when accounts are created) -->
-          <!--
-          <div class="social-icons">
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-x-twitter"></i></a>
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-          -->
+          <p><i class="fas fa-location-dot"></i> India</p>
         </div>
       </div>
 
@@ -279,5 +271,6 @@
 
     <!-- JS -->
     <script src="assets/js/script.js"></script>
+    <script src="assets/js/form-handler.js"></script>
   </body>
 </html>
